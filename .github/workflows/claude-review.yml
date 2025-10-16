@@ -1,7 +1,7 @@
 name: PR Reviews with Claude Code
 
 permissions:
-  contents: read
+  contents: read write
   pull-requests: write
 
 on:
