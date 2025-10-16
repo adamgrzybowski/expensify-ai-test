@@ -3,6 +3,11 @@ allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__
 description: Review a code contribution pull request
 ---
 
-List all available MCP tools
 
-Put one inline comment with gh pr review in 195 line of file src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx. The comment should be "IT WORKED!"
+Put one inline comment in 195 line of file src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx. The comment should be "IT WORKED!"
+
+First try to use mcp tool to add comment. If this doesn't work use gh pr review command.
+
+If something requires approval, explain it to me how to give approval
+
+List all available MCP tools
