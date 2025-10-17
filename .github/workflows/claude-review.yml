@@ -95,11 +95,11 @@ jobs:
           prompt: |
             Put one inline comment in 195 line of file src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx. 
 
-            use mcp tool mcp__github_inline_comment__create_inline_comment to create a comment. The body of comment is below. If you can't create a comment just sa it, dont' try other methods.
+            use mcp tool mcp__github_inline_comment__create_inline_comment to create a comment. The body of comment is below. If you can't create a comment just sa it, dont' try other methods. Try twice
 
-            If the mcp tool is not available try to list all mcp available tools. Try to create a tmp file with mcp tool that include the body of comment
+            If the mcp tool is not available try to list all mcp available tools. Try to create a tmp file in /tmp/ directory with mcp tool that include the body of comment
 
-            use claude mcp list to list all tools available
+            use claude mcp list to list all tools available and show me the effect of this function
 
             <body>
 
