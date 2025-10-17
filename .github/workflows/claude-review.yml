@@ -90,7 +90,7 @@ jobs:
 
             ./.github/scripts/ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17 --body-file /path/to/body.md
             
-            if this command requires approval, explain why
+            if this command requires approval, explain why and how to do this given that there is a list of allowed tools
 
             <body>
             lalalal # alalalal
