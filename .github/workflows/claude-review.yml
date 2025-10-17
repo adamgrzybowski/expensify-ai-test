@@ -1,7 +1,7 @@
 name: PR Reviews with Claude Code
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 on:
@@ -58,6 +58,34 @@ jobs:
           echo "::notice::✅ Processing PR #$(echo "$PR_INFO" | jq -r '.number')"
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      
+      - name: Create MCP config for workflow_dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          cat > /tmp/mcp-config.json << 'EOF'
+          {
+            "mcpServers": {
+              "github_inline_comment": {
+                "command": "bun",
+                "args": [
+                  "run",
+                  "${{ github.action_path }}/src/mcp/github-inline-comment-server.ts"
+                ],
+                "env": {
+                  "GITHUB_TOKEN": "${{ github.token }}",
+                  "REPO_OWNER": "${{ github.repository_owner }}",
+                  "REPO_NAME": "${{ github.event.repository.name }}",
+                  "PR_NUMBER": "${{ steps.pr-data.outputs.PR_NUMBER }}",
+                  "GITHUB_API_URL": "https://api.github.com"
+                }
+              },
+              "mcp-server-filesystem": {
+                "command": "npx",
+                "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+              }
+            }
+          }
+          EOF
 
       - name: Run Claude Code (code)
         if: steps.filter.outputs.code == 'true'
