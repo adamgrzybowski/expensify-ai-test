@@ -45,6 +45,12 @@ jobs:
               docs:
                 - 'docs/**/*.md'
                 - 'docs/**/*.csv'
+                
+      - name: Install ghApiComment proxy
+        shell: bash
+        run: |
+          cp .github/scripts/ghApiComment.sh /usr/local/bin/ghApiComment
+          chmod +x /usr/local/bin/ghApiComment
 
       - name: Get PR details
         if: github.event_name == 'workflow_dispatch'
