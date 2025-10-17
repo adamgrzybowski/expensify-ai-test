@@ -99,6 +99,9 @@ jobs:
 
             If the mcp tool is not available try to list all mcp available tools. Try to create a tmp file in the repo directory with mcp tool that include the body of comment
             
+            use command with example below to post comment
+            ./.github/scripts/ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17 --body-file /path/to/body.md
+            
             show me what mcp tools are available for you
 
             <body>
