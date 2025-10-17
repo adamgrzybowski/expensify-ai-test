@@ -45,7 +45,7 @@ jobs:
               docs:
                 - 'docs/**/*.md'
                 - 'docs/**/*.csv'
-                
+      
       - name: Install ghApiComment proxy
         shell: bash
         run: |
