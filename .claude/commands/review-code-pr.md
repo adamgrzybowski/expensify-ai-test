@@ -6,7 +6,13 @@ description: Review a code contribution pull request
 
 Put one inline comment in 195 line of file src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx. 
 
-try to use MCP github inline comment. If there is probem with using it, try to diagnose what is the problem
+use command with example below
+
+
+././github/scripts/ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17
+
+Then write the comment body directly to STDIN (no echo or redirection needed).
+
 
 <body>
 

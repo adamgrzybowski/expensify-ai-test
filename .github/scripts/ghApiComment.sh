@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # Usage:
-#   ./ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17 --body-file /path/to/body.md
+#   ./ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17
+#   Then write the comment body directly to STDIN (no echo or redirection needed).
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -10,24 +11,15 @@ while [[ $# -gt 0 ]]; do
     --sha) SHA="$2"; shift 2 ;;
     --path) FILE_PATH="$2"; shift 2 ;;
     --position) POS="$2"; shift 2 ;;
-    --body-file) BODY_FILE="$2"; shift 2 ;;
-    *) echo "Unknown arg: $1" >&2; exit 2 ;;
+    *) shift ;;
   esac
 done
 
-if [[ -z "${PR:-}" || -z "${SHA:-}" || -z "${FILE_PATH:-}" || -z "${POS:-}" || -z "${BODY_FILE:-}" ]]; then
-  echo "Missing required args" >&2
-  exit 2
-fi
-
-if [[ ! -f "$BODY_FILE" ]]; then
-  echo "Body file not found: $BODY_FILE" >&2
-  exit 2
-fi
+BODY="$(cat)"
 
 gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls/${PR}/comments" \
   -f commit_id="$SHA" \
   -f path="$FILE_PATH" \
   -f position="$POS" \
-  -F body=@"$BODY_FILE" \
+  -F body="$BODY" \
   >/dev/null
