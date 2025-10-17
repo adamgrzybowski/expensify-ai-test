@@ -25,9 +25,14 @@ if [[ ! -f "$BODY_FILE" ]]; then
   exit 2
 fi
 
-gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls/${PR}/comments" \
-  -f commit_id="$SHA" \
-  -f path="$FILE_PATH" \
-  -f line="$POS" \
-  -F body=@"$BODY_FILE" \
+# Uwaga: żadnego -F (multipart)! Wysyłamy czysty JSON.
+gh api \
+  -X POST "repos/${GITHUB_REPOSITORY}/pulls/${PR}/comments" \
+  -H "Accept: application/vnd.github+json" \
+  --raw-field commit_id="$SHA" \
+  --raw-field path="$FILE_PATH" \
+  --raw-field line="${POS}" \
+  --raw-field side="RIGHT" \
+  --raw-field subject_type="line" \
+  --raw-field body="$(cat "$BODY_FILE")" \
   >/dev/null
