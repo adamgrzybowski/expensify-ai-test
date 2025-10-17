@@ -2,14 +2,14 @@
 set -euo pipefail
 
 # Usage:
-#   ./ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17 --body-file /path/to/body.md
+#   ./ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --line 17 --body-file /path/to/body.md
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --pr) PR="$2"; shift 2 ;;
     --sha) SHA="$2"; shift 2 ;;
     --path) FILE_PATH="$2"; shift 2 ;;
-    --position) POS="$2"; shift 2 ;;
+    --line) POS="$2"; shift 2 ;;
     --body-file) BODY_FILE="$2"; shift 2 ;;
     *) echo "Unknown arg: $1" >&2; exit 2 ;;
   esac
@@ -28,6 +28,6 @@ fi
 gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls/${PR}/comments" \
   -f commit_id="$SHA" \
   -f path="$FILE_PATH" \
-  -f position="$POS" \
+  -f line="$POS" \
   -F body=@"$BODY_FILE" \
   >/dev/null

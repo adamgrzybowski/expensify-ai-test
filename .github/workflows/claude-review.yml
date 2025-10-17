@@ -88,7 +88,7 @@ jobs:
             - save comment to a tmp file in repo containing body of the comment using mcp__mcp-server-filesystem__write_file
             - post the comment using ghApiComment.sh, example of how to use it is below
 
-            .github/scripts/ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17 --body-file /path/to/body.md
+            .github/scripts/ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --line 17 --body-file /path/to/body.md
             
             if this command requires approval, explain why and how to do this given that there is a list of allowed tools. remember that I  cant aprove interactively. It need to be aprovedx by the setup
 
