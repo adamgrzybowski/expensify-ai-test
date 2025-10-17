@@ -101,5 +101,5 @@ jobs:
             ```
             </body>
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,mcp__mcp-server-filesystem__write_file,Bash(.github/scripts/ghApiComment.sh),Bash(.github/scripts/ghApiComment.sh:*),Bash(ghApiComment.sh),Bash(ghApiComment),Bash(gh pr comment:*),Bash(gh api:*)"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,mcp__mcp-server-filesystem__write_file,Bash(.github/scripts/ghApiComment.sh),Bash(.github/scripts/ghApiComment.sh:*),Bash(ghApiComment.sh:*),Bash(ghApiComment),Bash(gh pr comment:*),Bash(gh api:*)"
             --mcp-config /tmp/mcp-config.json
