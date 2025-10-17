@@ -9,9 +9,23 @@ Put one inline comment in 195 line of file src/components/MoneyRequestReportView
 First try to use mcp tool to add comment. 
 
 To use gh api use exactly the command below and fill <number of the PR>
+to fill <body> use the text in <comment></comment>
+
+<comment>
+# This works
+
+__and this__
+
+`const a = 'lala'`
+
+```ts
+const tmp = 123;
+```
+
+</comment>
 
 {
-  "command": "gh api repos/adamgrzybowski/expensify-ai-test/pulls/<number of the PR>/comments -f body=\"IT WORKED!\" -f path=\"src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx\" -f commit_id=\"e6bc91f43532e11a93194db7f1966a82681c7931\" -F line=195 --method POST",
+  "command": "gh api repos/adamgrzybowski/expensify-ai-test/pulls/<number of the PR>/comments -f body=<body> -f path=\"src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx\" -f commit_id=\"e6bc91f43532e11a93194db7f1966a82681c7931\" -F line=195 --method POST",
   "description": "Add inline comment to PR"
 }
 
