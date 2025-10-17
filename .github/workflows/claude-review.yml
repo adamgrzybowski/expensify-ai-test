@@ -67,4 +67,4 @@ jobs:
           github_token: ${{ github.token }}
           prompt: "/review-code-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ steps.pr-data.outputs.PR_NUMBER || github.event.pull_request.number }}"
           claude_args: |
-            --allowedTools "mcp-server-filesystem,mcp__github_inline_comment__create_inline_comment"
+            --allowedTools "mcp-server-filesystem,mcp__github_inline_comment__create_inline_comment,Bash(claude mcp list:*)"

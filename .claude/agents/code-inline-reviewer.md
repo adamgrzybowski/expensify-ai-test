@@ -11,6 +11,8 @@ use mcp tool mcp__github_inline_comment__create_inline_comment to create a comme
 
 If the mcp tool is not available try to list all mcp available tools. Try to create a tmp file with mcp tool that include the body of comment
 
+use claude mcp list to list all tools available
+
 <body>
 
 lalalal # alalalal
