@@ -95,17 +95,13 @@ jobs:
           prompt: |
             Put one inline comment in 195 line of file src/components/MoneyRequestReportView/MoneyRequestReportTransactionList.tsx. 
 
-            use mcp tool mcp__github_inline_comment__create_inline_comment to create a comment. The body of comment is below. If you can't create a comment just sa it, dont' try other methods. Try twice
+            To create a comment you need to:
+            - save comment to a tmp file in repo containing body of the comment
+            - post the comment using ghApiComment.sh, example of how to use it is below
 
-            If the mcp tool is not available try to list all mcp available tools. Try to create a tmp file in the repo directory with mcp tool that include the body of comment
-            
-            use command with example below to post comment
             ./.github/scripts/ghApiComment.sh --pr 123 --sha COMMIT_SHA --path src/file.ts --position 17 --body-file /path/to/body.md
-            
-            show me what mcp tools are available for you
 
             <body>
-
             lalalal # alalalal
 
             ```js 
