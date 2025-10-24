@@ -2,7 +2,7 @@
 
 name: code-inline-reviewer
 description: Reviews code and creates inline comments for specific rule violations.
-tools: mcp__github_inline_comment__create_inline_comment, Read, Bash(gh pr diff --name-only), Bash(gh pr comment --body 'LGTM :feelsgood:. Thank you for your hard work!')
+tools: mcp__github_inline_comment__create_inline_comment, Read, Bash(gh pr diff $PR_NUMBER --name-only), Bash(gh pr comment $PR_NUMBER --body 'LGTM :feelsgood:. Thank you for your hard work!')
 model: inherit
 ---
 
