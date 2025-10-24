@@ -6,7 +6,8 @@ permissions:
 
 on:
   pull_request_target:
-      types: [opened, ready_for_review]
+      # reopen only for testing
+      types: [opened, ready_for_review, reopen]
   pull_request_review_comment:
       types: [created]
 
