@@ -56,7 +56,7 @@ jobs:
             PR_NUMBER: ${{ github.event.pull_request.number }}
             call git log command
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment, Read, Bash(gh pr diff ${{ github.event.pull_request.number }} --name-only), Bash(gh pr comment ${{ github.event.pull_request.number }} --body 'LGTM :feelsgood:. Thank you for your hard work!')"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment"
 
       # - name: Run Claude Code (docs)
       #   if: steps.filter.outputs.docs == 'true'
