@@ -53,8 +53,8 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
-            /review-code-pr 
             PR_NUMBER: ${{ github.event.pull_request.number }}
+            call git log command
           claude_args: |
             --allowedTools "mcp__github_inline_comment__create_inline_comment, Read, Bash(gh pr diff ${{ github.event.pull_request.number }} --name-only), Bash(gh pr comment ${{ github.event.pull_request.number }} --body 'LGTM :feelsgood:. Thank you for your hard work!')"
 
