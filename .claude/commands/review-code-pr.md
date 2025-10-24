@@ -7,7 +7,7 @@ Perform a comprehensive PR review using a specialized subagent:
 
 ## Inline Review
 Use the code-inline-reviewer agent to:
-- Scan all changed source code files
+- Analyze the PR diff for code changes
 - Create inline comments for specific review rule violations
 - Focus on line-specific, actionable feedback
 
