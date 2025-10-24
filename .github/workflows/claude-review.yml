@@ -6,7 +6,7 @@ permissions:
 
 on:
   pull_request_target:
-      # reopen only for testing
+      # reopened only for testing
       types: [opened, ready_for_review, reopened]
   pull_request_review_comment:
       types: [created]
@@ -30,35 +30,21 @@ jobs:
             exit 0
           fi
 
-      - name: Get PR diff
-        id: pr-diff
-        run: |
-          echo "::notice::📋 Getting PR diff for review"
-          DIFF_FILE="/tmp/pr_${{ github.event.pull_request.number }}_diff.txt"
-          gh pr diff --name-only ${{ github.event.pull_request.number }} > "$DIFF_FILE"
-          echo "diff_file=$DIFF_FILE" >> $GITHUB_OUTPUT
-          echo "::notice::✅ PR diff saved to $DIFF_FILE"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
+        with:
+          fetch-depth: 1
 
       - name: Filter paths
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         id: filter
-        run: |
-          DIFF_FILE="${{ steps.pr-diff.outputs.diff_file }}"
-          
-          # Check if PR contains changes in src/ directory
-          if grep -q "^src/" "$DIFF_FILE"; then
-            echo "code=true" >> $GITHUB_OUTPUT
-          else
-            echo "code=false" >> $GITHUB_OUTPUT
-          fi
-          
-          # Check if PR contains changes in docs/ directory
-          if grep -q "^docs/" "$DIFF_FILE"; then
-            echo "docs=true" >> $GITHUB_OUTPUT
-          else
-            echo "docs=false" >> $GITHUB_OUTPUT
-          fi
+        with:
+            filters: |
+              code:
+                - 'src/**'
+              docs:
+                - 'docs/**/*.md'
+                - 'docs/**/*.csv'
 
       - name: Run Claude Code (code)
         if: steps.filter.outputs.code == 'true'
@@ -70,7 +56,7 @@ jobs:
             /review-code-pr 
             DIFF_FILE: ${{ steps.pr-diff.outputs.diff_file }}
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment, Read"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment, Read, Bash(gh pr diff --name-only), Bash(gh pr comment --body 'LGTM :feelsgood:. Thank you for your hard work!')"
 
       # - name: Run Claude Code (docs)
       #   if: steps.filter.outputs.docs == 'true'
