@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Check for excluded PRs
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
