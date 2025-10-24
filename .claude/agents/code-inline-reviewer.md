@@ -220,7 +220,7 @@ const {amountColumnSize, dateColumnSize, taxAmountColumnSize} = useMemo(() => {
 
 ## Instructions
 
-1. **Get the list of changed files** using the `gh pr diff --names-only` tool.
+1. **Get the list of changed files** using the `gh pr diff [PR_NUMBER] --names-only` tool.
 2. **Read each changed file carefully** using the Read tool
 3. **For each violation found, immediately create an inline comment** using the available GitHub inline comment tool
 4. **Required parameters for each inline comment:**
@@ -257,7 +257,7 @@ mcp__github_inline_comment__create_inline_comment:
 If ZERO violations are found, use the Bash tool to create a top-level PR comment.:
 
 ```bash
-gh pr comment --body 'LGTM :feelsgood:. Thank you for your hard work!'
+gh pr comment [PR_NUMBER] --body 'LGTM :feelsgood:. Thank you for your hard work!'
 ```
 
 ## Comment Format
