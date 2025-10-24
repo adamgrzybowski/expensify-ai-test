@@ -70,7 +70,7 @@ jobs:
             /review-code-pr 
             DIFF_FILE: ${{ steps.pr-diff.outputs.diff_file }}
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment, Read"
 
       # - name: Run Claude Code (docs)
       #   if: steps.filter.outputs.docs == 'true'
