@@ -35,7 +35,7 @@ jobs:
         run: |
           echo "::notice::📋 Getting PR diff for review"
           DIFF_FILE="/tmp/pr_${{ github.event.pull_request.number }}_diff.txt"
-          gh pr diff ${{ github.event.pull_request.number }} > "$DIFF_FILE"
+          gh pr diff --name-only ${{ github.event.pull_request.number }} > "$DIFF_FILE"
           echo "diff_file=$DIFF_FILE" >> $GITHUB_OUTPUT
           echo "::notice::✅ PR diff saved to $DIFF_FILE"
         env:
@@ -47,14 +47,14 @@ jobs:
           DIFF_FILE="${{ steps.pr-diff.outputs.diff_file }}"
           
           # Check if PR contains changes in src/ directory
-          if grep -q "^diff --git.*src/" "$DIFF_FILE"; then
+          if grep -q "^src/" "$DIFF_FILE"; then
             echo "code=true" >> $GITHUB_OUTPUT
           else
             echo "code=false" >> $GITHUB_OUTPUT
           fi
           
           # Check if PR contains changes in docs/ directory
-          if grep -q "^diff --git.*docs/" "$DIFF_FILE"; then
+          if grep -q "^docs/" "$DIFF_FILE"; then
             echo "docs=true" >> $GITHUB_OUTPUT
           else
             echo "docs=false" >> $GITHUB_OUTPUT

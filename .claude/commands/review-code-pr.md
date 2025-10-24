@@ -1,5 +1,5 @@
 ---
-allowed-tools: mcp__github_inline_comment__create_inline_comment,Read
+allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment
 description: Review a code contribution pull request
 ---
 
@@ -7,7 +7,7 @@ Perform a comprehensive PR review using a specialized subagent:
 
 ## Inline Review
 Use the code-inline-reviewer agent to:
-- Analyze the PR diff for code changes
+- Scan all changed source code files
 - Create inline comments for specific review rule violations
 - Focus on line-specific, actionable feedback
 
