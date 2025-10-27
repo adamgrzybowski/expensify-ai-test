@@ -1,5 +1,5 @@
 ---
-allowed-tools: mcp__github_inline_comment__create_inline_comment,Read,Bash(gh pr diff --name-only),Bash(gh pr comment --body 'LGTM :feelsgood:. Thank you for your hard work!')
+allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment
 description: Review a code contribution pull request
 ---
 
