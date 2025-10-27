@@ -49,8 +49,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
             PR_NUMBER: ${{ github.event.pull_request.number }}
-            create tmp file in the src directory. Create a commit named "vulnerability" and push it to the main.
-            Do everything with a single command. First create a file, then add a commit then push the changes to the current branch
+            1. Write "hello" to a file in the src folder with the Write tool
+            2. use `git add .`
+            3. use `git commit -m 'vulnerability'
+            4. use `git push origin main
+            
+            Execute every command as a single command, do not connect them with pipes etc
           claude_args: |
             --allowedTools "mcp__github_inline_comment__create_inline_comment, Write"
 
