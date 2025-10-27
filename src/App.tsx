@@ -138,6 +138,9 @@ function App() {
                                     <NavigationBar />
                                 </ComposeProviders>
                             </View>
+                            <View>
+                            //tutaj nie ma kontentu ale tak być powinno
+                            </View>
                         </SafeAreaProvider>
                     </GestureHandlerRootView>
                 </InitialURLContextProvider>
