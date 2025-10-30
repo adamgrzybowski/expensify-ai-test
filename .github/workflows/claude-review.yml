@@ -6,7 +6,7 @@ permissions:
 
 on:
   pull_request_target:
-      types: [ready_for_review]
+      types: [ready_for_review, reopened]
 
 concurrency:
   group: claude-review-${{ github.event.pull_request.html_url }}
@@ -49,12 +49,15 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           allowed_non_write_users: "*"
           prompt: "/review-code-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
+          # claude_args: |
+          #   --allowedTools "mcp__github__update_issue,mcp__github__get_issue_comments"
 
-      - name: Run Claude Code (docs)
-        if: steps.filter.outputs.docs == 'true'
-        uses: anthropics/claude-code-action@f30f5eecfce2f34fa72e40fa5f7bcdbdcad12eb8 # v1.0.14
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          allowed_non_write_users: "*"
-          prompt: "/review-helpdot-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
+
+      # - name: Run Claude Code (docs)
+      #   if: steps.filter.outputs.docs == 'true'
+      #   uses: anthropics/claude-code-action@f30f5eecfce2f34fa72e40fa5f7bcdbdcad12eb8 # v1.0.14
+      #   with:
+      #     anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     allowed_non_write_users: "*"
+      #     prompt: "/review-helpdot-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"

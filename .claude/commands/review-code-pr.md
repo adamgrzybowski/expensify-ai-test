@@ -3,16 +3,7 @@ allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__
 description: Review a code contribution pull request
 ---
 
-Perform a comprehensive PR review using a specialized subagent:
-
-## Inline Review
-Use the code-inline-reviewer agent to:
-- Scan all changed source code files
-- Create inline comments for specific review rule violations
-- Focus on line-specific, actionable feedback
-
-Run the agent and ensure its feedback is posted to the PR.
-
-<important>
-Keep feedback concise.
-</important>
+Run each of these commands with any output that makes sense. I want to check if they work
+1. gh pr comment:*
+2. gh pr diff:*
+3. gh pr view:*,
