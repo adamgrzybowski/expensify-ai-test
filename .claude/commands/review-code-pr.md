@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment
+allowed-tools: Bash(ls)
 description: Review a code contribution pull request
 ---
 
