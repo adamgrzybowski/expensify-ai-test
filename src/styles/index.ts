@@ -773,7 +773,7 @@ const staticStyles = (theme: ThemeColors) =>
             borderRadius: variables.buttonBorderRadius,
             minHeight: variables.componentSizeLarge,
             minWidth: variables.componentSizeLarge,
-            paddingHorizontal: 20,
+            paddingHorizontal: 24,
             backgroundColor: theme.buttonDefaultBG,
         },
 
